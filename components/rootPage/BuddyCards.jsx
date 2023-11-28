@@ -2,6 +2,8 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 const BuddyCards = ({ user }) => {
+  console.log(user);
+
   return (
     <article className={styles.buddyCard}>
       <Image src={user.profilepic} alt={user.name} width={350} height={300} />
