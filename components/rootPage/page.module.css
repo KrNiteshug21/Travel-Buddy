@@ -33,6 +33,7 @@
 }
 
 .headerForm {
+  width: 100%;
   display: flex;
   gap: 1rem;
   margin-inline: auto;
@@ -46,8 +47,12 @@
   }
 }
 
+.headerForm input {
+  width: 100%;
+}
+
 .destInputDiv {
-  flex: 1 1 400px;
+  flex: 1 1 600px;
 }
 
 .monthSelectDiv {

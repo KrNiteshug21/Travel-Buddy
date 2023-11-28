@@ -1,17 +1,11 @@
 import mongoose from "mongoose";
 
-const destinationSchema = new mongoose.Schema({
-  tripDestinationName: String,
-  destinationTitle: String,
-  description: String,
-  images: [
-    {
-      type: String,
-    },
-  ],
-  travelcost: Number,
+const tripSchema = new mongoose.Schema({
+  destination: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Destination",
+  },
+  peoplejoined: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
-module.exports =
-  mongoose.models.Destination ||
-  mongoose.model("Destination", destinationSchema);
+module.exports = mongoose.models.Trip || mongoose.model("Trip", tripSchema);

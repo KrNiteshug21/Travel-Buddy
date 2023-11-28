@@ -36,7 +36,7 @@ const Header = () => {
               placeholder="Where would you like to go?"
             />
           </div>
-          <div className={styles.monthSelectDiv}>
+          {/* <div className={styles.monthSelectDiv}>
             <label htmlFor="month">Month of Travel: </label>
             <select
               name="month"
@@ -57,7 +57,7 @@ const Header = () => {
               <option value="November">November</option>
               <option value="December">December</option>
             </select>
-          </div>
+          </div> */}
           <div>
             <input type="submit" value="Search" className={styles.searchBtn} />
           </div>

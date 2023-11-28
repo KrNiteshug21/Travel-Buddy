@@ -3,7 +3,7 @@ import Image from "next/image";
 import image from "@/public/img/Customer-Service-in-Travel-Industry.jpg";
 import profilePicture from "@/public/img/usman-yousaf-q2q5CdLuWnI-unsplash.jpg";
 import styles from "./page.module.css";
-import { fetchUser } from "@/lib/data";
+import { fetchUsers } from "@/lib/userData";
 import Header from "@/components/rootPage/Header";
 
 // const profile = {
@@ -16,11 +16,8 @@ import Header from "@/components/rootPage/Header";
 // };
 
 export default async function Home() {
-  const users = await fetchUser();
+  const users = await fetchUsers();
   // console.log("users", users);
-  // const users = [
-  //   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  // ];
 
   return (
     <>
@@ -88,7 +85,7 @@ export default async function Home() {
             </h2>
             <div className={styles.findBuddyCardContainer}>
               {users.map((user) => {
-                return <BuddyCards key={user.id} user={user} />;
+                return <BuddyCards key={user._id} user={user} />;
               })}
             </div>
           </section>

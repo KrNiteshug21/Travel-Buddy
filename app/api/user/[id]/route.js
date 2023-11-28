@@ -11,44 +11,40 @@ export const GET = async (req, { params }) => {
   return NextResponse.json(user, { status: 200 });
 };
 
-// export const PUT = async (req, res) => {
-//   await connectDB();
+export const PUT = async (req, { params }) => {
+  await connectDB();
 
-//   const { name, profilepic, desc, destination, month, travelCount } =
-//     await req.json();
-//   if (!name || !profilepic || !desc || !destination || !month || !travelCount) {
-//     NextResponse.status(400).json({ message: "Missing required data" });
-//   }
+  const userId = params.id;
+  const { name, desc, destination, month, travelCount } = await req.json();
 
-//   const user = await User.findOne({ name }).exec();
-//   if (!user) {
-//     return NextResponse.status(400).json({ message: "User Not Found" });
-//   }
+  const user = await User.findOne({ _id: userId }).exec();
+  if (!user) {
+    return NextResponse.json({ message: "User Not Found" });
+  }
 
-//   user.name = name;
-//   user.profilepic = profilepic;
-//   user.desc = desc;
-//   user.destination = destination;
-//   user.month = month;
-//   user.travelCount = travelCount;
+  if (name) user.name = name;
+  if (desc) user.desc = desc;
+  if (destination) user.destination = destination;
+  if (month) user.month = month;
+  if (travelCount) user.travelCount = travelCount;
 
-//   const result = await user.save();
-//   const reply = `${result.name} updated`;
-//   NextResponse.json(reply);
-// };
+  const result = await user.save();
+  return NextResponse.json({ mssage: `${result.name} updated` });
+};
 
-// export const DELETE = async (req, res) => {
-//   const { id } = req.json();
-//   if (!id) {
-//     return NextResponse.status(400).json({ message: "User Id is required" });
-//   }
+export const DELETE = async (req, { params }) => {
+  await connectDB();
+  const userId = params.id;
+  if (!userId) {
+    return NextResponse.json({ message: "User Id is required" });
+  }
 
-//   const user = await User.findById(id).exec();
-//   if (!user) {
-//     return NextResponse.status(400).json({ message: "User Not Found" });
-//   }
+  const user = await User.findOne({ _id: userId }).exec();
+  const { name } = user;
+  if (!user) {
+    return NextResponse.json({ message: "User Not Found" });
+  }
 
-//   const result = await user.deleteOne();
-//   const reply = `${result.title} with ${result._id} deleted`;
-//   NextResponse.json(reply);
-// };
+  const result = await user.deleteOne();
+  return NextResponse.json({ message: `${name} deleted` });
+};

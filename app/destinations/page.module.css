@@ -1,0 +1,4 @@
+.destinationPage {
+  max-width: min(calc(100% - 3rem), 1200px);
+  margin-inline: auto;
+}
