@@ -1,20 +1,25 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const BuddyCards = ({ user }) => {
-  console.log(user);
-
   return (
     <article className={styles.buddyCard}>
       <Image src={user.profilepic} alt={user.name} width={350} height={300} />
       <div className={styles.buddyCardDesc}>
         <h2>{user.name}</h2>
-        <p>{user.desc}</p>
-        <p>destination:- {user.destination}</p>
-        <p>Travel Month:- {user.month}</p>
-        <a href="#">
+        <p>
+          {user.desc.length > 30 ? `${user.desc.slice(0, 30)}...` : user.desc}
+        </p>
+        <p>
+          <span>Destination</span> <span>{user.destination}</span>
+        </p>
+        <p>
+          <span>Travel Month</span> <span>{user.month}</span>
+        </p>
+        <Link href="#">
           <button className={styles.joinBtn}>Join trip</button>
-        </a>
+        </Link>
       </div>
     </article>
   );

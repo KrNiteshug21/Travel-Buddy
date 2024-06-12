@@ -6,7 +6,6 @@ export const GET = async (req, res) => {
   await connectDB();
 
   const query = await req.query;
-  console.log(query);
   const destinations = await Destination.find({});
   return NextResponse.json(destinations, { status: 200 });
 };

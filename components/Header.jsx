@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import headerImage from "@/public/img/pexels-kirill-lazarev-8482194.jpg";
 import styles from "./page.module.css";
 
 const Header = () => {
@@ -17,26 +16,27 @@ const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.headerWrapper}>
-        <h1 className={styles.headerHeading}>Find Travel Buddies</h1>
-        <p className={styles.headerPara}>
-          Get to experience the world in low cost by sharing your trvelling
-          expenses with your partner
-        </p>
-        <form className={styles.headerForm} onSubmit={(e) => handleSubmit(e)}>
-          <div className={styles.destInputDiv}>
-            <label htmlFor="dest">Choose travel destination: </label>
-            <input
-              type="text"
-              name="dest"
-              id="dest"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              placeholder="Where would you like to go?"
-            />
-          </div>
-          {/* <div className={styles.monthSelectDiv}>
+    <>
+      <header className={styles.header}>
+        <div className={styles.headerWrapper}>
+          <h1 className={styles.headerHeading}>Find Travel Buddies</h1>
+          <p className={styles.headerPara}>
+            Get to experience the world in low cost by sharing your travelling
+            expenses with your partner
+          </p>
+          <form className={styles.headerForm} onSubmit={(e) => handleSubmit(e)}>
+            <div className={styles.destInputDiv}>
+              <label htmlFor="dest">Choose travel destination: </label>
+              <input
+                type="text"
+                name="dest"
+                id="dest"
+                value={destination}
+                onChange={(e) => setDestination(e.target.value)}
+                placeholder="Where would you like to go?"
+              />
+            </div>
+            {/* <div className={styles.monthSelectDiv}>
             <label htmlFor="month">Month of Travel: </label>
             <select
               name="month"
@@ -58,12 +58,17 @@ const Header = () => {
               <option value="December">December</option>
             </select>
           </div> */}
-          <div>
-            <input type="submit" value="Search" className={styles.searchBtn} />
-          </div>
-        </form>
-      </div>
-    </header>
+            <div>
+              <input
+                type="submit"
+                value="Search"
+                className={styles.searchBtn}
+              />
+            </div>
+          </form>
+        </div>
+      </header>
+    </>
   );
 };
 

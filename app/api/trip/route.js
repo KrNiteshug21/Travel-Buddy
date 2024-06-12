@@ -18,8 +18,6 @@ export const POST = async (req, res) => {
 
   const { destination, uid } = await req.json();
 
-  console.log(destination);
-
   const trip = await Trip.create({
     destination,
     peoplejoined: [uid],

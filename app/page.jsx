@@ -1,24 +1,9 @@
-import BuddyCards from "@/components/rootPage/BuddyCards";
 import Image from "next/image";
 import image from "@/public/img/Customer-Service-in-Travel-Industry.jpg";
-import profilePicture from "@/public/img/usman-yousaf-q2q5CdLuWnI-unsplash.jpg";
 import styles from "./page.module.css";
-import { fetchUsers } from "@/lib/userData";
-import Header from "@/components/rootPage/Header";
-
-// const profile = {
-//   name: "Windy Ran",
-//   desc: "Co-living in Cyprus ☀️💻 Home Office in a Villa with Pool (Private Room)",
-//   profilepic: profilePicture,
-//   destination: "Cyprus",
-//   month: "Nov-2023",
-//   travelCount: 48,
-// };
+import Header from "@/components/Header";
 
 export default async function Home() {
-  const users = await fetchUsers();
-  // console.log("users", users);
-
   return (
     <>
       <Header />
@@ -28,7 +13,7 @@ export default async function Home() {
             <div className={styles.tourismDesc}>
               <h2>Real & verified travelers!</h2>
               <p>
-                Find Travel Buddies on JoinMyTrip - the best Travel Buddy
+                Find Travel Buddies on our website - the best Travel Buddy
                 Website out there. Every trip is organized by verified &
                 passionate travelers just like you. Find a travel adventure that
                 fits who you are!
@@ -79,29 +64,18 @@ export default async function Home() {
             </div>
           </section>
 
-          <section className={styles.findBuddyWrapper}>
-            <h2 className={styles.findBuddyHeading}>
-              Find your next Travel Buddy right here!
-            </h2>
-            <div className={styles.findBuddyCardContainer}>
-              {users.map((user) => {
-                return <BuddyCards key={user._id} user={user} />;
-              })}
-            </div>
-          </section>
-
           <section className={styles.travelWithUsWrapper}>
-            <h2 className={styles.travelHeading}>Why Travel With Us</h2>
+            <h1 className={styles.travelHeading}>Why Travel With Us</h1>
             <div className={styles.travelCardContainer}>
               <div className={styles.travelCards}>
-                <h3>Incredibly Authentic</h3>
+                <h2>Incredibly Authentic</h2>
                 <p>
                   Find like-minded travel buddies and discover an authentic and
                   exciting new way of traveling.
                 </p>
               </div>
               <div className={styles.travelCards}>
-                <h3>Memorably Unique</h3>
+                <h2>Memorably Unique</h2>
                 <p>
                   Our TripLeaders have a magic touch to make each trip special!
                   Explore extraordinary destinations, walk off-the-beaten-path,
@@ -109,14 +83,14 @@ export default async function Home() {
                 </p>
               </div>
               <div className={styles.travelCards}>
-                <h3>Genuinely Easy</h3>
+                <h2>Genuinely Easy</h2>
                 <p>
                   Travel effortlessly with our unique trips. We do the hard work
                   for you. So, sit back and get ready for a wholesome journey!
                 </p>
               </div>
               <div className={styles.travelCards}>
-                <h3>24/7 Support</h3>
+                <h2>24/7 Support</h2>
                 <p>
                   Your satisfaction is our priority. We are available around the
                   clock to help you. Reach out to our support center for any

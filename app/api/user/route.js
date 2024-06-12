@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req, res) => {
   await connectDB();
-  const users = await User.find({});
+  const users = await User.find();
   return NextResponse.json(users, { status: 200 });
 };
 

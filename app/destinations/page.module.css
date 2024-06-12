@@ -11,10 +11,12 @@
 
 .destiantionHeading {
   padding-block: 0.5rem;
+  text-align: center;
 }
 
 .destinationCardWrapper {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
 }

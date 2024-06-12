@@ -11,25 +11,26 @@ export const GET = async (req, { params }) => {
   return NextResponse.json(user, { status: 200 });
 };
 
-export const PUT = async (req, { params }) => {
+export const PATCH = async (req, { params }) => {
   await connectDB();
 
   const userId = params.id;
-  const { name, desc, destination, month, travelCount } = await req.json();
+  const reqBody = await req.json();
 
   const user = await User.findOne({ _id: userId }).exec();
   if (!user) {
     return NextResponse.json({ message: "User Not Found" });
   }
 
-  if (name) user.name = name;
-  if (desc) user.desc = desc;
-  if (destination) user.destination = destination;
-  if (month) user.month = month;
-  if (travelCount) user.travelCount = travelCount;
+  if (reqBody?.name) user.name = reqBody.name;
+  if (reqBody?.password) user.password = reqBody.password;
+  if (reqBody?.desc) user.desc = reqBody.desc;
+  if (reqBody?.destination) user.destination = reqBody.destination;
+  if (reqBody?.month) user.month = reqBody.month;
+  if (reqBody?.travelCount) user.travelCount = reqBody.travelCount;
 
   const result = await user.save();
-  return NextResponse.json({ mssage: `${result.name} updated` });
+  return NextResponse.json({ mssage: `${result.name} updated`, result });
 };
 
 export const DELETE = async (req, { params }) => {
